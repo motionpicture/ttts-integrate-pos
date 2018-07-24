@@ -1,0 +1,500 @@
+$breakpoint_tablet:801px;
+$breakpoint_mobile:481px;
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: ' ';
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin btn-big {
+    width: 260px;
+    height: 50px;
+    margin: 20px auto;
+    font-size: 16px;
+    @media screen and (max-width: $breakpoint_tablet) {
+        font-size:14px;
+    }
+}
+
+@mixin btn-red {
+    background-color: #cc0000;
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus,
+    {
+        background-color: #dc0000;
+    }
+}
+
+@mixin btn-blue {
+    background-color: #2490d0;
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus,
+    {
+        background-color: #34a0e0;
+    }
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.clearfix {
+    @include clearfix;
+}
+
+body {
+    font-family: '游ゴシック', sans-serif;
+    background-color: #fff;
+    @media screen and (max-width: $breakpoint_tablet) {
+        font-size:14px;
+    }
+}
+
+* {
+    box-sizing: border-box!important;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+hr {
+    margin: 10px 0;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+select {
+    cursor: pointer;
+}
+
+.row {
+    margin: 0 0 20px 0;
+}
+
+.form-inline .form-control {
+    @media screen and (max-width: $breakpoint_tablet) {
+        width:100%;
+    }
+}
+
+.errmsg {
+    color: red;
+}
+
+.visible-pc {
+    @media screen and (max-width: $breakpoint_tablet) {
+        display:none;
+    }
+}
+
+.pagetitle {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 1.5em;
+}
+
+.guidetext {
+    text-align: center;
+    padding: 1em 0 2em 0;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.pretext {
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: transparent;
+}
+
+.btn {
+    display: table;
+    color: #fff;
+    background-image: none;
+    background-color: #595758;
+    box-shadow: 0 1px #171717;
+    appearance: none;
+    border: none;
+    @media screen and (max-width: $breakpoint_tablet) {
+        border-radius:6px;
+    }
+    >span {
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    &:hover,
+    &:active,
+    &:focus,
+    &:active:focus,
+    {
+        color: #fff;
+        background-color: #696768;
+    }
+}
+
+.btn-big {
+    @include btn-big;
+}
+
+.btn-disabled {
+    cursor: default;
+    pointer-events: none;
+    color: #b6b6b6 !important;
+    border-color: #b6b6b6 !important;
+    background-color: #fff !important;
+    border: 1px solid;
+    box-shadow: none;
+}
+
+.btn-login {
+    @include btn-red;
+}
+
+.btn-confirmcancel {
+    @include btn-red;
+}
+
+.btns2clm {
+    @include clearfix;
+    width: 800px;
+    margin: 20px auto 0;
+    padding: 0 10%;
+    text-align: center;
+    @media screen and (max-width: $breakpoint_tablet) {
+        width:auto;
+        padding: 0;
+    }
+    .btn {
+        float: left;
+        @media screen and (max-width: $breakpoint_tablet) {
+            float:none;
+        }
+        &:first-child {
+            float: right;
+            @media screen and (max-width: $breakpoint_tablet) {
+                float:none;
+                margin-bottom: 1em;
+            }
+        }
+    }
+}
+
+.navbtns {}
+
+.accordion_mobile_toggle {
+    position: relative;
+    @media screen and (max-width: $breakpoint_mobile) {
+        cursor:pointer;
+    }
+    &::before {
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 1em;
+        margin-top: -5px;
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10.4px 6px 0 6px;
+        border-color: #ffffff transparent transparent transparent;
+        @media screen and (max-width: $breakpoint_mobile) {
+            display:block;
+        }
+    }
+    &.accordion_mobile_toggleIsOpen::before {
+        border-width: 0 6px 10.4px 6px;
+        border-color: transparent transparent #ffffff transparent;
+    }
+}
+
+.accordion_mobile_inner {
+    @media screen and (max-width: $breakpoint_mobile) {
+        display:none;
+    }
+}
+
+.wrapper-2clm {
+    @include clearfix;
+    .clm-right {
+        float: right;
+    }
+    .clm-left {
+        float: left;
+    }
+    .clm-right,
+    .clm-left {
+        @media screen and (max-width: $breakpoint_tablet) {
+            float:none;
+        }
+    }
+}
+
+.modal {
+    .modal-dialog {
+        width: 800px;
+        @media screen and (max-width: $breakpoint_tablet) {
+            width:auto;
+        }
+    }
+    .modal-content {
+        position: relative;
+        text-align: center;
+        border-radius: 0;
+        @media screen and (max-width: $breakpoint_tablet) {
+            border-radius:6px;
+        }
+    }
+    .btn-circle-close {
+        position: absolute;
+        z-index: 999;
+        top: -16px;
+        right: -16px;
+        @media screen and (max-width: $breakpoint_tablet) {
+            top:-10px;
+            right: -10px;
+        }
+        &::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 32px;
+            background-size: 64px 32px;
+            background-repeat: no-repeat;
+            background-position: left;
+            background-image: url(/images/common/btn-circle-close.png);
+            @media screen and (max-width: $breakpoint_tablet) {
+                width:48px;
+                height: 48px;
+                background-size: 96px 48px;
+            }
+        }
+        &:hover {
+            &::before {
+                cursor: pointer;
+                background-position: right;
+            }
+        }
+    }
+    .modal-header {
+        border: none;
+        font-size: 20px;
+        padding: 30px;
+    }
+    .modal-footer {
+        border: none;
+        padding: 30px;
+        @media screen and (max-width: $breakpoint_tablet) {
+            padding-top:15px;
+        }
+        .btn-close {
+            margin: auto;
+            width: 200px;
+            height: 45px;
+            @media screen and (max-width: $breakpoint_tablet) {
+                width:80%;
+            }
+        }
+    }
+}
+
+#maincontainer {
+    display: table;
+    max-width: 1200px;
+    padding: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #eaeaea;
+    border-bottom: none;
+}
+
+#adminmenu {
+    display: table-cell;
+    width: 190px;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    a {
+        text-decoration: none;
+    }
+    h1 {
+        text-align: center;
+        margin: 30px auto;
+    }
+    >ul {
+        li {
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            font-weight: bold;
+            a {
+                display: block;
+                line-height: 64px;
+                color: #000;
+                padding-left: 10px;
+                &:hover {
+                    color: #777;
+                }
+            }
+        }
+        >li {
+            font-size: 16px;
+            >a {
+                padding-right: 24px;
+                position: relative;
+                &::before {
+                    margin-right: 8px;
+                    content: '';
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 24px;
+                    height: 24px;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+                &::after {
+                    position: absolute;
+                    right: 10px;
+                    content: '+';
+                }
+                &.is-open::after {
+                    content: '-';
+                }
+            }
+        }
+    }
+}
+
+.menu-report {
+    >a::before {
+        background-image: url(/images/common/icon_report.svg);
+    }
+}
+
+.menu-schedule {
+    >a::before {
+        background-image: url(/images/common/icon_schedule.png);
+    }
+}
+
+.menu-master {
+    >a::before {
+        background-image: url(/images/common/icon_master.png);
+    }
+}
+
+.submenu {
+    display: none;
+    background-color: #efefef;
+}
+
+main {
+    display: table-cell;
+    vertical-align: top;
+    background: #f7f7f7;
+    .content {
+        padding: 1em;
+    }
+}
+
+#loginstatus {
+    color: #fff;
+    display: table;
+    width: 100%;
+    height: 70px;
+    background: #efefef;
+    p {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    p:first-child {
+        color: #000;
+        text-align: right;
+        &::before {
+            content: '';
+            display: inline-block;
+            background-size: 24px;
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            background-image: url(/images/common/icon_user.svg);
+        }
+    }
+    p:last-child {
+        width: 80px;
+        text-align: right;
+        padding-right: 10px;
+        .btn-logout {
+            color: #fff;
+            display: inline-block;
+            padding: 12px;
+            border-radius: 100%;
+            text-align: center;
+            background-color: #5e5e5e;
+            >span::before {
+                content: url(/images/common/icon_logout.svg);
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+            }
+            &:hover {
+                background-color: #6e6e6e;
+            }
+        }
+    }
+}
+
+.cateogryindex {
+    padding: 2em;
+    h2 {
+        font-size: 1.2em;
+        &::before {
+            content: url(/images/common/icon_report.svg);
+            display: inline-block;
+            vertical-align: middle;            
+            width: 2em;
+            height: 2em;
+        }
+    }
+    ul {
+        li {
+            display: inline-block;
+            background-color: #fff;
+            margin: 1em 1em 1em 0;
+            cursor: pointer;
+            a {
+                color: #000;
+                display: block;
+                padding: 1em;
+                font-weight: bold;
+            }
+            &:hover {
+                background-color: #fdfdfd;
+                a {
+                    text-decoration: none;
+                    color: #444;
+                }
+            }
+        }
+    }
+}

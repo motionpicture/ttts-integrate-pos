@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+.scheduler {
+    margin: 0 auto;
+    overflow: auto;
+    width: 100%;
+    min-width: 800px;
+    height: 500px;
+    table {
+        overflow: hidden;
+        border-collapse: collapse;
+        border: 2px solid #ccc;
+    }
+    td {
+        border-right: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+    }
+    .header {
+        text-align: center;
+        font-size: 12px;
+        border-bottom: 1px solid #ccc;
+    }
+    .times {
+        width: auto;
+        .time {
+            font-size: 12px;
+            padding: 0 10px;
+        }
+    }
+    .screen {
+        position: relative;
+    }
+
+    .performance {
+        position: absolute;
+        padding: 0px 2px;
+            .inner {
+                cursor: pointer;
+                border-radius: 3px;
+                padding: 5px;
+                border: 1px solid #a7dbff;
+                background-color: #d5eeff;
+                height: 100%;
+                word-wrap: break-word;
+                font-size: 11px;
+                overflow: hidden;
+                &:hover {
+                    transition: all 0.2s;
+                    background-color: #a7dbff;
+                }
+            }
+    }
+}
+
+.performance-edit-modal {
+    td {
+        padding: 10px;
+    }
+    .screening-time {
+        margin-bottom: 0;
+        select {
+            display: inline-block;
+            width: auto;
+        }
+    }
+}

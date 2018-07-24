@@ -1,0 +1,96 @@
+store_code:
+    field: store_code
+    field_label: 店舗ｺｰﾄﾞ
+pos_no:
+    field: pos_no
+    field_label: POS番号
+receipt_no:
+    field: receipt_no
+    field_label: ﾚｼｰﾄ番号
+no1:
+    field: no1
+    field_label: 行番号
+no2:
+    field: no2
+    field_label: 連番
+type:
+    field: type
+    field_label: 取引区分
+payment_no:
+    field: payment_no
+    field_label: 購入番号
+performance_id:
+    field: performance_id
+    field_label: パフォーマンスID
+seat_code:
+    field: seat_code
+    field_label: 席番号
+performance_type:
+    field: performance_type
+    field_label: 予約区分
+performance_day:
+    field: performance_day
+    field_label: 予約日付
+start_time:
+    field: start_time
+    field_label: 開始時間
+sales_date:
+    field: sales_date
+    field_label: 売上日付
+section_code:
+    field: section_code
+    field_label: 部門ｺｰﾄﾞ
+plu_code:
+    field: plu_code
+    field_label: PLUコード
+item_name:
+    field: item_name
+    field_label: 商品名
+sales_amount:
+    field: sales_amount
+    field_label: 標準売価
+unit_price:
+    field: unit_price
+    field_label: 単価
+unit:
+    field: unit
+    field_label: 数量
+sum_amount:
+    field: sum_amount
+    field_label: 合計金額
+payment_type:
+    field: payment_type
+    field_label: 支払種別
+cash:
+    field: cash
+    field_label: 現金売上
+payment_type1:
+    field: payment_type1
+    field_label: 支払種別売上1
+payment_type2:
+    field: payment_type2
+    field_label: 支払種別売上2
+payment_type3:
+    field: payment_type3
+    field_label: 支払種別売上3
+payment_type4:
+    field: payment_type4
+    field_label: 支払種別売上4
+payment_type5:
+    field: payment_type5
+    field_label: 支払種別売上5
+payment_type6:
+    field: payment_type6
+    field_label: 支払種別売上6
+payment_type7:
+    field: payment_type7
+    field_label: 支払種別売上7
+payment_type8:
+    field: payment_type8
+    field_label: 支払種別売上8
+customer1:
+    field: customer1
+    field_label: 客世代
+customer2:
+    field: customer2
+    field_label: 客層名

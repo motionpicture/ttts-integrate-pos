@@ -1,0 +1,45 @@
+<script src="/js/reportSales.js"></script>
+
+<section>
+    <h1>売上日付レポート出力</h1>
+    <hr>
+    <form method="post" class="form-salesReportByTransactionEndDate">
+        <%- include('../common/master/_hidden') %>
+            <input type="hidden" name="reportType" value="sales_date">
+
+            <label for="dateFrom">売上日付選択</label>
+            <div class="daterange">
+                <input type="text" class="form-control datepicker" name="dateFrom" id="dateFrom"> ～
+                <input type="text" class="form-control datepicker" name="dateTo" id="dateTo">
+            </div>
+
+            <hr>
+
+            <a class="btn btn-ok btn-download">
+                <span>レポートダウンロード</span>
+            </a>
+    </form>
+</section>
+
+<section>
+    <h1>予約日付レポート出力</h1>
+    <hr>
+    <form method="post" class="form-salesReportByEventStartDate">
+        <%- include('../common/master/_hidden') %>
+            <input type="hidden" name="reportType" value="performance_day">
+
+            <label for="dateFrom">予約日付期間選択</label>
+            <div class="daterange">
+                <input type="text" class="form-control datepicker" name="eventStartFrom" id="eventStartFrom"> ～
+                <input type="text" class="form-control datepicker" name="eventStartThrough" id="eventStartThrough">
+            </div>
+
+            <hr>
+
+            <a class="btn btn-ok btn-download">
+                <span>レポートダウンロード</span>
+            </a>
+    </form>
+</section>
+
+<%- include('../common/master/_loading') %>

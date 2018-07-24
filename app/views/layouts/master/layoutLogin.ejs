@@ -1,0 +1,30 @@
+<%
+let pageId = (routeName) ? `page_backuend_${routeName.replace(/\./g,'_')}` : '';
+let pageClassName = (routeName) ? `page-${routeName.replace(/\./g,' page-')}` : '';
+%>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title><%= title %></title>
+<meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+
+<link href="/css/style.css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-datepicker.js"></script>
+<script src="/js/locales/bootstrap-datepicker.ja.js"></script>
+<%- defineContent('scripts') %>
+</head>
+
+<body id="<%- pageId %>" class="page-backend <%- pageClassName %>">
+
+<div class="container">
+    <%- body %>
+</div>
+
+</body>
+</html>

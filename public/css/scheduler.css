@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box; }
+
+.scheduler {
+  margin: 0 auto;
+  overflow: auto;
+  width: 100%;
+  min-width: 800px;
+  height: 500px; }
+  .scheduler table {
+    overflow: hidden;
+    border-collapse: collapse;
+    border: 2px solid #ccc; }
+  .scheduler td {
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc; }
+  .scheduler .header {
+    text-align: center;
+    font-size: 12px;
+    border-bottom: 1px solid #ccc; }
+  .scheduler .times {
+    width: auto; }
+    .scheduler .times .time {
+      font-size: 12px;
+      padding: 0 10px; }
+  .scheduler .screen {
+    position: relative; }
+  .scheduler .performance {
+    position: absolute;
+    padding: 0px 2px; }
+    .scheduler .performance .inner {
+      cursor: pointer;
+      border-radius: 3px;
+      padding: 5px;
+      border: 1px solid #a7dbff;
+      background-color: #d5eeff;
+      height: 100%;
+      word-wrap: break-word;
+      font-size: 11px;
+      overflow: hidden; }
+      .scheduler .performance .inner:hover {
+        transition: all 0.2s;
+        background-color: #a7dbff; }
+
+.performance-edit-modal td {
+  padding: 10px; }
+
+.performance-edit-modal .screening-time {
+  margin-bottom: 0; }
+  .performance-edit-modal .screening-time select {
+    display: inline-block;
+    width: auto; }

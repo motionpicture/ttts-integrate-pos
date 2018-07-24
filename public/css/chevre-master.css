@@ -1,0 +1,184 @@
+/* -------------------------------*/
+/* Input area
+/* -------------------------------*/
+div.form-container
+{
+    border-left:solid 1px silver;
+    background-color:#F2F2F2;
+    padding-left:15px;
+    padding-right:15px;
+}
+div.search
+{
+    background-color:#FFFFFF;
+}
+div.search form
+{
+    background-color:#F2F2F2;
+    padding-left:15px;
+    padding-right:15px;
+}
+div.form-header
+{
+    border-left:solid 1px silver;
+    background-color:#FFFFFF;
+    padding:15px 15px 15px 15px;
+}
+div.form-header-label
+{
+    padding-top:7px;
+    padding-bottom:7px;
+}
+.label-title
+{
+    font-weight: normal;
+    font-size: 10pt;
+    padding-right: 0px;
+    text-align: left;
+}
+.input_must
+{
+    padding-top: 7px;
+    padding-left: 4px;
+    margin-bottom: 0px;
+    float: left;
+    font-weight: normal;
+    color: red;
+}
+.error
+{
+    color: red;
+}
+.message
+{
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
+/* -------------------------------*/
+/* List area
+/* -------------------------------*/
+table.table thead tr th,
+table.table tbody tr td
+{
+    font-weight: normal;
+    border-style: dotted;  
+    border-color: #3D3D3D;
+    border-bottom: none;
+    vertical-align: middle;
+}
+table.table thead tr th,
+table.table tbody tr td.center
+{
+    text-align: center;
+}
+/* -------------------------------*/
+/* Pager area
+/* -------------------------------*/
+.div_pager_parent ul{
+    display: flex;
+    justify-content: center;
+}
+/* -------------------------------*/
+/* Header
+/* -------------------------------*/
+div.container{
+    width: 95%;
+}
+p.disp_id
+{
+    display:block;
+    min-width:50px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 10px;
+    text-align: center;
+    background-color:#3D3D3D;
+    color:#FFFFFF;
+}
+div.project_img {
+    margin-top: 10px;
+    height:40px;
+    width:40px;
+    background-image: url('../images/ProjectIcon.png');
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+}
+div.project_img_small {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    height:30px;
+    width:30px;
+    background-image: url('../images/ProjectIcon.png');
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+}
+
+/* -------------------------------*/
+/* button
+/* -------------------------------*/
+.btn-area
+{
+    width:100%;
+    text-align:center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.btn-ok
+{
+    color: #FFFFFF;
+    background-color:#F4A721;
+    padding: 10px 60px 10px 60px;
+}
+.btn-ok:active,
+.btn-ok:active:focus,
+.btn-ok:focus,
+.btn-ok:hover{
+    color: #FFFFFF;
+    background-color:#FFA500
+}
+.btn-logout
+{
+    color: #FFFFFF;
+    background-color:#3D3D3D;
+}
+.btn-logout:active,
+.btn-logout:active:focus,
+.btn-logout:focus,
+.btn-logout:hover{
+    color: #FFFFFF;
+    background-color:#000000
+}
+.btn-list
+{
+    color: #FFFFFF;
+    background-color:#3D3D3D;
+    padding: 4px 20px 4px 20px;
+}
+.btn-list:active,
+.btn-list:active:focus,
+.btn-list:focus,
+.btn-list:hover{
+    color: #FFFFFF;
+    background-color:#000000
+}
+/* -------------------------------*/
+/* Left menu
+/* -------------------------------*/
+.menu-group
+{
+    padding:6px 0px 6px 0px;
+    font-size: 10pt;
+}
+
+
+/* -------------------------------*/
+/* Master Login
+/* -------------------------------*/
+.form-login .form-group .form-inline label
+{
+    width:100px;
+}
