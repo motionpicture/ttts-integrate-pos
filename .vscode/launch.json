@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [{
+        "type": "node",
+        "request": "launch",
+        "name": "launch",
+        "program": "${workspaceFolder}/server.js",
+        "sourceMaps": true,
+        "env": {
+            "API_AUTHORIZE_SERVER_DOMAIN": "ttts-admin-development.auth.ap-northeast-1.amazoncognito.com",
+            "API_CLIENT_ID": "4hqvnh07jafava4tov60il1fjt",
+            "API_CLIENT_SECRET": "b2d79t8igesqmtstvis7pkbvca6knoa9it49k1cgaeiekeccq5c",
+            "API_ENDPOINT": "https://ttts-api-development.azurewebsites.net",
+            "API_RESOURECE_SERVER_IDENTIFIER": "https://ttts-api-development.azurewebsites.net",
+            "BASIC_AUTH_NAME": "motionpicture",
+            "BASIC_AUTH_PASS": "Iop@-098",
+            "NODE_ENV": "development",
+            "NPM_TOKEN": "87297fb6-adba-49c6-a672-2b864e464b61",
+            "REDIS_HOST": "ttts-redis-development.redis.cache.windows.net",
+            "REDIS_KEY": "s2dyGGWYB0x2WjPK3y0E1SBtOpOeFcC14fbcUjlO5Lg=",
+            "REDIS_PORT": "6380",
+            "RESERVATION_START_DATE": "2018-01-23",
+            "WEBSITE_HTTPLOGGING_RETENTION_DAYS": "7",
+            "WEBSITE_NODE_DEFAULT_VERSION": "6.9.1",
+            "MSSQL_DATABASE": "ttts-data-aggregation-development-sqldatabase",
+            "MSSQL_PASSWORD": "TTTS!admin",
+            "MSSQL_SERVER": "ttts-data-aggregation-development-sqlserver.database.windows.net",
+            "MSSQL_USER": "aggregationAdmin"
+        }
+    }]
+}
+    
