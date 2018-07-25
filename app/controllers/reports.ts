@@ -125,13 +125,12 @@ export async function getSales(req: Request, res: Response): Promise<void> {
         eventStartThrough: getValue(req.query.eventStartThrough)
     };
 
-    try {
-        //Check the data transmitted to the server from the client
-        const errorMessage = await validate(req);
-        if (errorMessage !== '') {
-            throw new Error(errorMessage);
-        }
-
+    //Check the data transmitted to the server from the client
+    const errorMessage = await validate(req);
+    if (errorMessage !== '') {
+        res.writeHead(500, {'Content-Type': 'text/plain; charset=utf-8'});
+        res.write(errorMessage);
+    } else {
         // Get fields and fieldNames to output csv
         const csvPath = `${__dirname}/../configs/pos_sales.csv.yml`;
         const fileInfo = yaml.safeLoad(fs.readFileSync(csvPath, 'utf8'));
@@ -166,12 +165,9 @@ export async function getSales(req: Request, res: Response): Promise<void> {
 
         res.setHeader('Content-disposition', `attachment; filename*=UTF-8\'\'${encodeURIComponent(`${filename}.tsv`)}`);
         res.setHeader('Content-Type', 'text/csv; charset=Shift_JIS');
-
         res.write(jconv.convert(output, 'UTF8', 'SJIS'));
-        res.end();
-    } catch (error) {
-        console.log(error);
     }
+    res.end();
 }
 
 /**
@@ -296,23 +292,23 @@ function getValue(inputValue: string | null): string | null {
  * @param req 
  */
 async function validate(req: Request): Promise<any> {
-
+    
     const validatorResult = await req.getValidationResult();
     const errors: any = (!validatorResult.isEmpty()) ? validatorResult.mapped : {};
 
-    if (req.query.dateFrom != null && isNaN(Date.parse(req.query.dateFrom))) {
+    if (req.query.dateFrom && isValidDate(req.query.dateFrom) == false) {
         errors.dateFrom = { msg: '売上日付選択Fromが正しくない' };
     }
 
-    if (req.query.dateTo != null && isNaN(Date.parse(req.query.dateTo))) {
+    if (req.query.dateTo && isValidDate(req.query.dateTo) == false) {
         errors.dateTo = { msg: '売上日付選択Toが正しくない' };
     }
 
-    if (req.query.eventStartFrom != null && isNaN(Date.parse(req.query.eventStartFrom))) {
+    if (req.query.eventStartFrom && isValidDate(req.query.eventStartFrom) == false) {
         errors.eventStartFrom = { msg: '予約日付期間選択Fromが正しくない' };
     }
 
-    if (req.query.eventStartThrough != null && isNaN(Date.parse(req.query.eventStartThrough))) {
+    if (req.query.eventStartThrough && isValidDate(req.query.eventStartThrough) == false) {
         errors.eventStartThrough = { msg: '予約日付期間選択Toが正しくない' };
     }
 
@@ -323,4 +319,26 @@ async function validate(req: Request): Promise<any> {
     });
 
     return errorMessage;
+}
+
+/**
+ * Check valid date YYYY-MM-DD
+ * @param s
+ */
+function isValidDate(s: any) {
+    const dateFormat = /^\d{1,4}[\/]\d{1,2}[\/]\d{1,2}$/;
+    if (dateFormat.test(s)) {
+        s = s.replace(/0*(\d*)/gi, "$1");
+        let dateArray = s.split(/[\.|\/|-]/);
+        dateArray[1] = dateArray[1] - 1;
+        if (dateArray[0].length < 4) {
+            dateArray[0] = (parseInt(dateArray[0]) < 50) ? 2000 + parseInt(dateArray[0]) : 1900 + parseInt(dateArray[0]);
+        }
+        const testDate = new Date(dateArray[0], dateArray[1], dateArray[2]);
+        if (testDate.getDate() != dateArray[2] || testDate.getMonth() != dateArray[1] || testDate.getFullYear() != dateArray[0]) {
+            return false;
+        }
+        return true;
+    }
+    return false;
 }
