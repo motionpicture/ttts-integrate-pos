@@ -19,3 +19,7 @@
 | `RESERVATION_START_DATE`               | true     |                |                                    |
 | `WEBSITE_HTTPLOGGING_RETENTION_DAYS`   | true     |                |                                    |
 | `WEBSITE_NODE_DEFAULT_VERSION`         | true     |                |                                    |
+| `MSSQL_DATABASE`                       | true     |                |                                    |
+| `MSSQL_PASSWORD`                       | true     |                |                                    |
+| `MSSQL_SERVER`                         | true     |                |                                    |
+| `MSSQL_USER`                           | true     |                |                                    |
