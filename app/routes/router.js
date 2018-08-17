@@ -8,10 +8,7 @@ const express = require("express");
 const http_status_1 = require("http-status");
 const router = express.Router();
 router.get('/', (__, res) => {
-    res.redirect(http_status_1.MOVED_PERMANENTLY, '/reports');
-});
-router.get('/master/report', (__, res) => {
-    res.redirect(http_status_1.MOVED_PERMANENTLY, '/reports');
+    res.redirect(http_status_1.MOVED_PERMANENTLY, '/reports/sales');
 });
 exports.default = router;
 //# sourceMappingURL=router.js.map

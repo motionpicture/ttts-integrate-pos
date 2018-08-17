@@ -33,7 +33,7 @@ let pageClassName = (routeName) ? `page-${routeName.replace(/\./g,' page-')}` : 
             <li class="menu-report">
                 <a href="javascript:void(0);" class="<%- (~pageClassName.indexOf('report')) ? 'is-open' : '' %>" onclick="$(this).toggleClass('is-open').next().slideToggle(200);">レポート</a>
                 <ul class="submenu submenu-report">
-                    <li class="submenu-report-sales"><a href="/reports/sales">売上レポート出力</a></li>
+                    <li class="submenu-report-sales"><a href="/reports/sales">POS売上レポート出力</a></li>
                 </ul>
             </li>
         </ul>
