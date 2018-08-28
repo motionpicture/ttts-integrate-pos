@@ -182,9 +182,15 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
     const pool = await new sql.ConnectionPool(configs.mssql).connect();
     const posSales: IData[] = await pool.request().query(sqlString).then(
         docs => docs.recordset.map(doc => {
-            doc.start_time = moment(doc.start_time).format('HH:mm');
-            doc.sales_date = moment(doc.sales_date).format('YYYY/MM/DD HH:mm:ss');
-            doc.performance_day = moment(doc.performance_day).format('YYYY/MM/DD HH:mm:ss');
+            if (doc.start_time) {
+                doc.start_time = moment(doc.start_time).format('HH:mm');
+            }
+            if (doc.sales_date) {
+                doc.sales_date = moment(doc.sales_date).format('YYYY/MM/DD HH:mm:ss');
+            }
+            if (doc.performance_day) {
+                doc.performance_day = moment(doc.performance_day).format('YYYY/MM/DD HH:mm:ss');
+            }
             return <IData>(posSales2Data(<IPosSalesData>doc))
         })
     );

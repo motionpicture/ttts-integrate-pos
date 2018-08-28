@@ -90,9 +90,15 @@ function search4SalesDateOrPerformanceDay(searchConditions) {
         sqlString = searchConditions.reportType == 'sales_date' ? createTime4SalesDate(sqlString, searchConditions) : createTime4PerformanceDay(sqlString, searchConditions);
         const pool = yield new sql.ConnectionPool(configs.mssql).connect();
         const posSales = yield pool.request().query(sqlString).then(docs => docs.recordset.map(doc => {
-            doc.start_time = moment(doc.start_time).format('HH:mm');
-            doc.sales_date = moment(doc.sales_date).format('YYYY/MM/DD HH:mm:ss');
-            doc.performance_day = moment(doc.performance_day).format('YYYY/MM/DD HH:mm:ss');
+            if (doc.start_time) {
+                doc.start_time = moment(doc.start_time).format('HH:mm');
+            }
+            if (doc.sales_date) {
+                doc.sales_date = moment(doc.sales_date).format('YYYY/MM/DD HH:mm:ss');
+            }
+            if (doc.performance_day) {
+                doc.performance_day = moment(doc.performance_day).format('YYYY/MM/DD HH:mm:ss');
+            }
             return (posSales2Data(doc));
         }));
         debug(`${posSales.length} pos_sales found.`);
