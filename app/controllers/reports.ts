@@ -183,6 +183,8 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
     const posSales: IData[] = await pool.request().query(sqlString).then(
         docs => docs.recordset.map(doc => {
             doc.start_time = moment(doc.start_time).format('HH:mm');
+            doc.sales_date = moment(doc.sales_date).format('YYYY/MM/DD HH:mm:ss');
+            doc.performance_day = moment(doc.performance_day).format('YYYY/MM/DD HH:mm:ss');
             return <IData>(posSales2Data(<IPosSalesData>doc))
         })
     );
