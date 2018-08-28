@@ -89,7 +89,10 @@ function search4SalesDateOrPerformanceDay(searchConditions) {
         let sqlString = `SELECT * FROM pos_sales WHERE 1 = 1`;
         sqlString = searchConditions.reportType == 'sales_date' ? createTime4SalesDate(sqlString, searchConditions) : createTime4PerformanceDay(sqlString, searchConditions);
         const pool = yield new sql.ConnectionPool(configs.mssql).connect();
-        const posSales = yield pool.request().query(sqlString).then(docs => docs.recordset.map(doc => (posSales2Data(doc))));
+        const posSales = yield pool.request().query(sqlString).then(docs => docs.recordset.map(doc => {
+            doc.start_time = moment(doc.start_time).format('HH:mm');
+            return (posSales2Data(doc));
+        }));
         debug(`${posSales.length} pos_sales found.`);
         return posSales;
     });

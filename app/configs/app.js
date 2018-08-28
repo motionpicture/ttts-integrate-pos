@@ -7,6 +7,7 @@ module.exports = {
         connectionTimeout: 600000,
         requestTimeout: 600000,
         options: {
+            useUTC: false,
             encrypt: true
         },
         pool: {

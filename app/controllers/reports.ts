@@ -181,7 +181,10 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
 
     const pool = await new sql.ConnectionPool(configs.mssql).connect();
     const posSales: IData[] = await pool.request().query(sqlString).then(
-        docs => docs.recordset.map(doc => <IData>(posSales2Data(<IPosSalesData>doc)))
+        docs => docs.recordset.map(doc => {
+            doc.start_time = moment(doc.start_time).format('HH:mm');
+            return <IData>(posSales2Data(<IPosSalesData>doc))
+        })
     );
     debug(`${posSales.length} pos_sales found.`);
     return posSales;
