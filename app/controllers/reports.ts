@@ -194,7 +194,10 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
             if (doc.entry_date) {
                 doc.entry_date = moment(doc.entry_date).format('YYYY/MM/DD HH:mm:ss');
             }
-            
+            if (doc.payment_no == '' || doc.payment_no == null) {
+                doc.entry_flg = `予約非連携`;
+            }
+
             Object.keys(doc).forEach(prop => {
                 if (doc[prop] == null || doc[prop] == '') {
                     doc[prop] = ``;
