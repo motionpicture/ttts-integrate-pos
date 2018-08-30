@@ -94,3 +94,9 @@ customer1:
 customer2:
     field: customer2
     field_label: 客層名
+entry_flg:
+    field: entry_flg
+    field_label: 入場フラグ
+entry_date:
+    field: entry_date
+    field_label: 入場時間

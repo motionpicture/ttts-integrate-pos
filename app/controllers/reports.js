@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const _ = require("underscore");
 const sql = require("mssql");
-const moment = require("moment");
+const moment = require("moment-timezone");
 const fs = require("fs");
 const createDebug = require("debug");
 const yaml = require("js-yaml");
@@ -59,7 +59,7 @@ function getSales(req, res) {
                 fieldNames.push(fileInfo[propName].field_label);
             }
             //write csv file
-            let filename = moment().format('YYYYMMDD_HHMMSS');
+            let filename = moment.tz('Asia/Tokyo').format('YYYYMMDD_HHMMSS');
             const output = json2csv({
                 data: datas,
                 fields: fields,
@@ -98,6 +98,9 @@ function search4SalesDateOrPerformanceDay(searchConditions) {
             }
             if (doc.performance_day) {
                 doc.performance_day = moment(doc.performance_day).format('YYYY/MM/DD HH:mm:ss');
+            }
+            if (doc.entry_date) {
+                doc.entry_date = moment(doc.entry_date).format('YYYY/MM/DD HH:mm:ss');
             }
             return (posSales2Data(doc));
         }));

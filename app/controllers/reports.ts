@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import * as _ from 'underscore';
 import * as sql from 'mssql';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import * as fs from 'fs';
 import * as createDebug from 'debug';
 import * as yaml from 'js-yaml';
@@ -149,7 +149,7 @@ export async function getSales(req: Request, res: Response): Promise<void> {
         }
 
         //write csv file
-        let filename = moment().format('YYYYMMDD_HHMMSS');
+        let filename = moment.tz('Asia/Tokyo').format('YYYYMMDD_HHMMSS');
         const output = json2csv({
             data: datas,
             fields: fields,
@@ -190,6 +190,9 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
             }
             if (doc.performance_day) {
                 doc.performance_day = moment(doc.performance_day).format('YYYY/MM/DD HH:mm:ss');
+            }
+            if (doc.entry_date) {
+                doc.entry_date = moment(doc.entry_date).format('YYYY/MM/DD HH:mm:ss');
             }
             return <IData>(posSales2Data(<IPosSalesData>doc))
         })
