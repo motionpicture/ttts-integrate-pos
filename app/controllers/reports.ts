@@ -194,6 +194,15 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
             if (doc.entry_date) {
                 doc.entry_date = moment(doc.entry_date).format('YYYY/MM/DD HH:mm:ss');
             }
+            
+            Object.keys(doc).forEach(prop => {
+                if (doc[prop] == null || doc[prop] == '') {
+                    doc[prop] = ``;
+                } else if (typeof doc[prop] !== 'string') {
+                    doc[prop] = `${doc[prop]}`;
+                }
+                return true;
+            });
             return <IData>(posSales2Data(<IPosSalesData>doc))
         })
     );

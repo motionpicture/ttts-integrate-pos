@@ -102,6 +102,15 @@ function search4SalesDateOrPerformanceDay(searchConditions) {
             if (doc.entry_date) {
                 doc.entry_date = moment(doc.entry_date).format('YYYY/MM/DD HH:mm:ss');
             }
+            Object.keys(doc).forEach(prop => {
+                if (doc[prop] == null || doc[prop] == '') {
+                    doc[prop] = ``;
+                }
+                else if (typeof doc[prop] !== 'string') {
+                    doc[prop] = `${doc[prop]}`;
+                }
+                return true;
+            });
             return (posSales2Data(doc));
         }));
         debug(`${posSales.length} pos_sales found.`);
