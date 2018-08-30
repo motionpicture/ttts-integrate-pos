@@ -106,7 +106,7 @@ function search4SalesDateOrPerformanceDay(searchConditions) {
                 doc.entry_flg = `予約非連携`;
             }
             Object.keys(doc).forEach(prop => {
-                if (doc[prop] == null || doc[prop] == '') {
+                if (doc[prop] == null || doc[prop] === '') {
                     doc[prop] = ``;
                 }
                 else if (typeof doc[prop] !== 'string') {

@@ -199,7 +199,7 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
             }
 
             Object.keys(doc).forEach(prop => {
-                if (doc[prop] == null || doc[prop] == '') {
+                if (doc[prop] == null || doc[prop] === '') {
                     doc[prop] = ``;
                 } else if (typeof doc[prop] !== 'string') {
                     doc[prop] = `${doc[prop]}`;
