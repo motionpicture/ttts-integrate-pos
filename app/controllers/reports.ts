@@ -149,7 +149,7 @@ export async function getSales(req: Request, res: Response): Promise<void> {
         }
 
         //write csv file
-        let filename = moment.tz('Asia/Tokyo').format('YYYYMMDD_HHMMSS');
+        let filename = moment.tz('Asia/Tokyo').format('YYYYMMDD_HHmmss');
         const output = json2csv({
             data: datas,
             fields: fields,

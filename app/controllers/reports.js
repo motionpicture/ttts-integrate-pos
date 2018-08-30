@@ -59,7 +59,7 @@ function getSales(req, res) {
                 fieldNames.push(fileInfo[propName].field_label);
             }
             //write csv file
-            let filename = moment.tz('Asia/Tokyo').format('YYYYMMDD_HHMMSS');
+            let filename = moment.tz('Asia/Tokyo').format('YYYYMMDD_HHmmss');
             const output = json2csv({
                 data: datas,
                 fields: fields,
