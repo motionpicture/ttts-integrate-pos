@@ -148,15 +148,20 @@ function createTime4SalesDate(sqlString, searchConditions) {
 function createTime4PerformanceDay(sqlString, searchConditions) {
     if (searchConditions.eventStartFrom !== null || searchConditions.eventStartThrough !== null) {
         let performanceDayConds = [];
+        let salesDateConds = [
+            'performance_day IS NULL'
+        ];
         if (searchConditions.eventStartFrom !== null) {
             const minEndFrom = (RESERVATION_START_DATE !== undefined) ? moment(RESERVATION_START_DATE) : moment('2017-01-01');
             const endFrom = moment(`${searchConditions.eventStartFrom}`, 'YYYY/MM/DD');
             performanceDayConds.push(`performance_day >= '${moment.max(endFrom, minEndFrom).format('YYYYMMDD')}'`);
+            salesDateConds.push(`sales_date >= '${moment.max(endFrom, minEndFrom).format('YYYY-MM-DD')}'`);
         }
         if (searchConditions.eventStartThrough !== null) {
             performanceDayConds.push(`performance_day <= '${moment(`${searchConditions.eventStartThrough}`, 'YYYY/MM/DD').format('YYYYMMDD')}'`);
+            salesDateConds.push(`sales_date <= '${moment(`${searchConditions.eventStartThrough}`, 'YYYY/MM/DD').format('YYYY-MM-DD')}'`);
         }
-        sqlString += ` AND (${performanceDayConds.join(' AND ')})`;
+        sqlString += ` AND ((${performanceDayConds.join(' AND ')}) OR (${salesDateConds.join(' AND ')}))`;
     }
     return sqlString;
 }

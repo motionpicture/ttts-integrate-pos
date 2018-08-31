@@ -178,7 +178,7 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
 
     let sqlString: string = `SELECT * FROM pos_sales WHERE 1 = 1`;    
     sqlString = searchConditions.reportType == 'sales_date' ? createTime4SalesDate(sqlString, searchConditions) : createTime4PerformanceDay(sqlString, searchConditions);
-
+    
     const pool = await new sql.ConnectionPool(configs.mssql).connect();
     const posSales: IData[] = await pool.request().query(sqlString).then(
         docs => docs.recordset.map(doc => {
@@ -246,17 +246,22 @@ function createTime4PerformanceDay(sqlString: string, searchConditions: ISearchS
 
     if (searchConditions.eventStartFrom !== null || searchConditions.eventStartThrough !== null) {
         let performanceDayConds: string[] = [];
+        let salesDateConds: string[] = [
+            'performance_day IS NULL'
+        ];
 
         if (searchConditions.eventStartFrom !== null) {
             const minEndFrom = (RESERVATION_START_DATE !== undefined) ? moment(RESERVATION_START_DATE) : moment('2017-01-01');
             const endFrom = moment(`${searchConditions.eventStartFrom}`, 'YYYY/MM/DD');
             performanceDayConds.push(`performance_day >= '${moment.max(endFrom, minEndFrom).format('YYYYMMDD')}'`);
+            salesDateConds.push(`sales_date >= '${moment.max(endFrom, minEndFrom).format('YYYY-MM-DD')}'`);
         }
 
         if (searchConditions.eventStartThrough !== null) {
             performanceDayConds.push(`performance_day <= '${moment(`${searchConditions.eventStartThrough}`, 'YYYY/MM/DD').format('YYYYMMDD')}'`);
+            salesDateConds.push(`sales_date <= '${moment(`${searchConditions.eventStartThrough}`, 'YYYY/MM/DD').format('YYYY-MM-DD')}'`);
         }
-        sqlString += ` AND (${performanceDayConds.join(' AND ')})`;
+        sqlString += ` AND ((${performanceDayConds.join(' AND ')}) OR (${salesDateConds.join(' AND ')}))`;
     }
     return sqlString;
 }
