@@ -178,7 +178,8 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
 
     let sqlString: string = `SELECT * FROM pos_sales WHERE 1 = 1`;    
     sqlString = searchConditions.reportType == 'sales_date' ? createTime4SalesDate(sqlString, searchConditions) : createTime4PerformanceDay(sqlString, searchConditions);
-    
+    sqlString = searchConditions.reportType == 'sales_date' ? orderBy4SalesDate(sqlString): orderBy4PerformanceDay(sqlString);
+
     const pool = await new sql.ConnectionPool(configs.mssql).connect();
     const posSales: IData[] = await pool.request().query(sqlString).then(
         docs => docs.recordset.map(doc => {
@@ -214,6 +215,14 @@ async function search4SalesDateOrPerformanceDay(searchConditions: any) {
 }
 
 /**
+ * CSVダウンロード画面から出力されれるCSVの並び順
+ * @param sqlString 
+ */
+function orderBy4SalesDate(sqlString: string) {
+    return sqlString + ' ORDER BY store_code ASC, pos_no ASC, receipt_no ASC, sales_date ASC';
+}
+
+/**
  * make search conditions for sales_date
  * @param sqlString 
  * @param searchConditions 
@@ -235,6 +244,14 @@ function createTime4SalesDate(sqlString: string, searchConditions: ISearchSalesC
         sqlString += ` AND (${salesDateConds.join(' AND ')})`;
     }
     return sqlString;
+}
+
+/**
+ * CSVダウンロード画面から出力されれるCSVの並び順
+ * @param sqlString 
+ */
+function orderBy4PerformanceDay(sqlString: string) {
+    return sqlString + ' ORDER BY performance_day ASC, start_time ASC';
 }
 
 /**
